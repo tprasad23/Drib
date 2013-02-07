@@ -22,57 +22,75 @@
 @synthesize shots;
 @synthesize shotURLS;
 
+- (id) init
+{
+    self = [super init];
+    
+    if (self)
+    {
+        // Custom initialization - label text for audio and video content
+        
+        NSLog(@"Calling init");
+    
+        NSData *jsonData = [NSData dataWithContentsOfURL:kGetShotsURL];
+        NSError *error = nil;
+        
+        if ( jsonData )
+        {
+            id jsonObjects = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&error];
+            
+            if (error)
+            {
+                NSLog(@"error is %@", [error localizedDescription]);
+            }
+            else
+            {
+                // Load image URLS into array.
+                
+                shotURLS = [[NSMutableArray alloc] init];
+                
+                NSArray *allShots = [jsonObjects objectForKey:@"shots"];
+                int i;
+                
+                for (i = 0; i < kNumShots; i++)
+                {
+                    // get image URL from temporary shot
+                    
+                    NSDictionary *tempShot = [allShots objectAtIndex:i];
+                    NSString *imgURL = [tempShot valueForKey:@"image_url"];
+                    
+                    [shotURLS addObject:imgURL];
+                    
+                    NSLog(@"image url is %@",imgURL);
+                }
+                
+                int numToShow = [shotURLS count];
+                NSLog(@"showing %d these many shots",numToShow);
+            }
+            
+        }
+        else
+        {
+            NSLog(@"error in retrieving the JSON data");
+        }
+    }
+    return self;
+}
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
-    NSData *jsonData = [NSData dataWithContentsOfURL:kGetShotsURL];
-    NSError *error = nil;
-
-    if ( jsonData )
-    {
-        id jsonObjects = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&error];
-        
-        if (error)
-        {
-            NSLog(@"error is %@", [error localizedDescription]);
-        }
-        else
-        {
-            // Load image URLS into array.
-            
-            shotURLS = [[NSMutableArray alloc] init];
-            
-            NSArray *allShots = [jsonObjects objectForKey:@"shots"];
-            int i;
-            
-            for (i = 0; i < kNumShots; i++)
-            {
-                
-                // get image URL from temporary shot
-                
-                NSDictionary *tempShot = [allShots objectAtIndex:i];
-                NSString *imgURL = [tempShot valueForKey:@"image_url"];
-                
-                [shotURLS addObject:imgURL];
-                
-                NSLog(@"image url is %@",imgURL);
-            }
-            
-            int numToShow = [shotURLS count];
-            NSLog(@"showing %d these many shots",numToShow);
-        }
-        
-    }
-    else
-    {
-        NSLog(@"error in retrieving the JSON data");
-    }
+    NSLog(@"Calling view Did Load");
+    
 }
 
 - (void) loadView
 {
+    NSLog(@"calling LoadView");
+    
     
     CGRect frame = [UIScreen mainScreen].applicationFrame;
     contentView = [[UIView alloc] initWithFrame:frame];
@@ -82,6 +100,8 @@
     contentView.backgroundColor = [UIColor grayColor];
     
     self.view = contentView;
+    
+    //
     
 }
 
