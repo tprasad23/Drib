@@ -10,6 +10,10 @@
 
 @interface DribbbleViewController : UIViewController
 
-@property UIView *contentView;
+@property(nonatomic, strong) UIView *contentView;
+@property(nonatomic, strong) NSArray *shots;
+@property(nonatomic, strong) NSMutableArray *shotURLS;
 
 @end
+
+

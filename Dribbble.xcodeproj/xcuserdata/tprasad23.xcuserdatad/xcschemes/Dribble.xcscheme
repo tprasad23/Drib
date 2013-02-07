@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "AA37226216C32CB900AC9B20"
-               BuildableName = "Dribble.app"
+               BuildableName = "Dribbble.app"
                BlueprintName = "Dribbble"
                ReferencedContainer = "container:Dribbble.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "AA37226216C32CB900AC9B20"
-            BuildableName = "Dribble.app"
+            BuildableName = "Dribbble.app"
             BlueprintName = "Dribbble"
             ReferencedContainer = "container:Dribbble.xcodeproj">
          </BuildableReference>
@@ -52,7 +52,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "AA37226216C32CB900AC9B20"
-            BuildableName = "Dribble.app"
+            BuildableName = "Dribbble.app"
             BlueprintName = "Dribbble"
             ReferencedContainer = "container:Dribbble.xcodeproj">
          </BuildableReference>
@@ -70,7 +70,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "AA37226216C32CB900AC9B20"
-            BuildableName = "Dribble.app"
+            BuildableName = "Dribbble.app"
             BlueprintName = "Dribbble"
             ReferencedContainer = "container:Dribbble.xcodeproj">
          </BuildableReference>

@@ -17,7 +17,6 @@
 		AA37227B16C32CB900AC9B20 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA37227A16C32CB900AC9B20 /* Default@2x.png */; };
 		AA37227D16C32CB900AC9B20 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA37227C16C32CB900AC9B20 /* Default-568h@2x.png */; };
 		AA37228016C32CB900AC9B20 /* DribbbleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA37227F16C32CB900AC9B20 /* DribbbleViewController.m */; };
-		AA37228316C32CB900AC9B20 /* DribbbleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA37228116C32CB900AC9B20 /* DribbbleViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,7 +35,8 @@
 		AA37227C16C32CB900AC9B20 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		AA37227E16C32CB900AC9B20 /* DribbbleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DribbbleViewController.h; sourceTree = "<group>"; };
 		AA37227F16C32CB900AC9B20 /* DribbbleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DribbbleViewController.m; sourceTree = "<group>"; };
-		AA37228216C32CB900AC9B20 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/DribbbleViewController.xib; sourceTree = "<group>"; };
+		AAF8E40A16C419B4008C4C45 /* URLRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = URLRequest.h; sourceTree = "<group>"; };
+		AAF8E40B16C419B4008C4C45 /* URLRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = URLRequest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,11 +83,11 @@
 		AA37226C16C32CB900AC9B20 /* Dribble */ = {
 			isa = PBXGroup;
 			children = (
+				AAF8E41616C41A16008C4C45 /* URLRequest */,
 				AA37227516C32CB900AC9B20 /* DribbbleAppDelegate.h */,
 				AA37227616C32CB900AC9B20 /* DribbbleAppDelegate.m */,
 				AA37227E16C32CB900AC9B20 /* DribbbleViewController.h */,
 				AA37227F16C32CB900AC9B20 /* DribbbleViewController.m */,
-				AA37228116C32CB900AC9B20 /* DribbbleViewController.xib */,
 				AA37226D16C32CB900AC9B20 /* Supporting Files */,
 			);
 			path = Dribble;
@@ -105,6 +105,15 @@
 				AA37227C16C32CB900AC9B20 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AAF8E41616C41A16008C4C45 /* URLRequest */ = {
+			isa = PBXGroup;
+			children = (
+				AAF8E40A16C419B4008C4C45 /* URLRequest.h */,
+				AAF8E40B16C419B4008C4C45 /* URLRequest.m */,
+			);
+			name = URLRequest;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,7 +172,6 @@
 				AA37227916C32CB900AC9B20 /* Default.png in Resources */,
 				AA37227B16C32CB900AC9B20 /* Default@2x.png in Resources */,
 				AA37227D16C32CB900AC9B20 /* Default-568h@2x.png in Resources */,
-				AA37228316C32CB900AC9B20 /* DribbbleViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,14 +197,6 @@
 				AA37227016C32CB900AC9B20 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		AA37228116C32CB900AC9B20 /* DribbbleViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AA37228216C32CB900AC9B20 /* en */,
-			);
-			name = DribbbleViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -301,6 +301,7 @@
 				AA37228816C32CB900AC9B20 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
