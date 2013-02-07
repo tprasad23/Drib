@@ -1,0 +1,308 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AA37226716C32CB900AC9B20 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA37226616C32CB900AC9B20 /* UIKit.framework */; };
+		AA37226916C32CB900AC9B20 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA37226816C32CB900AC9B20 /* Foundation.framework */; };
+		AA37226B16C32CB900AC9B20 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA37226A16C32CB900AC9B20 /* CoreGraphics.framework */; };
+		AA37227116C32CB900AC9B20 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA37226F16C32CB900AC9B20 /* InfoPlist.strings */; };
+		AA37227316C32CB900AC9B20 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AA37227216C32CB900AC9B20 /* main.m */; };
+		AA37227716C32CB900AC9B20 /* DribbbleAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AA37227616C32CB900AC9B20 /* DribbbleAppDelegate.m */; };
+		AA37227916C32CB900AC9B20 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = AA37227816C32CB900AC9B20 /* Default.png */; };
+		AA37227B16C32CB900AC9B20 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA37227A16C32CB900AC9B20 /* Default@2x.png */; };
+		AA37227D16C32CB900AC9B20 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA37227C16C32CB900AC9B20 /* Default-568h@2x.png */; };
+		AA37228016C32CB900AC9B20 /* DribbbleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA37227F16C32CB900AC9B20 /* DribbbleViewController.m */; };
+		AA37228316C32CB900AC9B20 /* DribbbleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA37228116C32CB900AC9B20 /* DribbbleViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		AA37226316C32CB900AC9B20 /* Dribbble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dribbble.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA37226616C32CB900AC9B20 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		AA37226816C32CB900AC9B20 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		AA37226A16C32CB900AC9B20 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		AA37226E16C32CB900AC9B20 /* Dribbble-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Dribbble-Info.plist"; sourceTree = "<group>"; };
+		AA37227016C32CB900AC9B20 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		AA37227216C32CB900AC9B20 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		AA37227416C32CB900AC9B20 /* Dribbble-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Dribbble-Prefix.pch"; sourceTree = "<group>"; };
+		AA37227516C32CB900AC9B20 /* DribbbleAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DribbbleAppDelegate.h; sourceTree = "<group>"; };
+		AA37227616C32CB900AC9B20 /* DribbbleAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DribbbleAppDelegate.m; sourceTree = "<group>"; };
+		AA37227816C32CB900AC9B20 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		AA37227A16C32CB900AC9B20 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		AA37227C16C32CB900AC9B20 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		AA37227E16C32CB900AC9B20 /* DribbbleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DribbbleViewController.h; sourceTree = "<group>"; };
+		AA37227F16C32CB900AC9B20 /* DribbbleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DribbbleViewController.m; sourceTree = "<group>"; };
+		AA37228216C32CB900AC9B20 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/DribbbleViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AA37226016C32CB900AC9B20 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA37226716C32CB900AC9B20 /* UIKit.framework in Frameworks */,
+				AA37226916C32CB900AC9B20 /* Foundation.framework in Frameworks */,
+				AA37226B16C32CB900AC9B20 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AA37225A16C32CB900AC9B20 = {
+			isa = PBXGroup;
+			children = (
+				AA37226C16C32CB900AC9B20 /* Dribble */,
+				AA37226516C32CB900AC9B20 /* Frameworks */,
+				AA37226416C32CB900AC9B20 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AA37226416C32CB900AC9B20 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AA37226316C32CB900AC9B20 /* Dribbble.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AA37226516C32CB900AC9B20 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AA37226616C32CB900AC9B20 /* UIKit.framework */,
+				AA37226816C32CB900AC9B20 /* Foundation.framework */,
+				AA37226A16C32CB900AC9B20 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AA37226C16C32CB900AC9B20 /* Dribble */ = {
+			isa = PBXGroup;
+			children = (
+				AA37227516C32CB900AC9B20 /* DribbbleAppDelegate.h */,
+				AA37227616C32CB900AC9B20 /* DribbbleAppDelegate.m */,
+				AA37227E16C32CB900AC9B20 /* DribbbleViewController.h */,
+				AA37227F16C32CB900AC9B20 /* DribbbleViewController.m */,
+				AA37228116C32CB900AC9B20 /* DribbbleViewController.xib */,
+				AA37226D16C32CB900AC9B20 /* Supporting Files */,
+			);
+			path = Dribble;
+			sourceTree = "<group>";
+		};
+		AA37226D16C32CB900AC9B20 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AA37226E16C32CB900AC9B20 /* Dribbble-Info.plist */,
+				AA37226F16C32CB900AC9B20 /* InfoPlist.strings */,
+				AA37227216C32CB900AC9B20 /* main.m */,
+				AA37227416C32CB900AC9B20 /* Dribbble-Prefix.pch */,
+				AA37227816C32CB900AC9B20 /* Default.png */,
+				AA37227A16C32CB900AC9B20 /* Default@2x.png */,
+				AA37227C16C32CB900AC9B20 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AA37226216C32CB900AC9B20 /* Dribbble */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA37228616C32CB900AC9B20 /* Build configuration list for PBXNativeTarget "Dribbble" */;
+			buildPhases = (
+				AA37225F16C32CB900AC9B20 /* Sources */,
+				AA37226016C32CB900AC9B20 /* Frameworks */,
+				AA37226116C32CB900AC9B20 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Dribbble;
+			productName = Dribble;
+			productReference = AA37226316C32CB900AC9B20 /* Dribbble.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AA37225B16C32CB900AC9B20 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = Dribbble;
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Teju Prasad";
+			};
+			buildConfigurationList = AA37225E16C32CB900AC9B20 /* Build configuration list for PBXProject "Dribbble" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = AA37225A16C32CB900AC9B20;
+			productRefGroup = AA37226416C32CB900AC9B20 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AA37226216C32CB900AC9B20 /* Dribbble */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AA37226116C32CB900AC9B20 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA37227116C32CB900AC9B20 /* InfoPlist.strings in Resources */,
+				AA37227916C32CB900AC9B20 /* Default.png in Resources */,
+				AA37227B16C32CB900AC9B20 /* Default@2x.png in Resources */,
+				AA37227D16C32CB900AC9B20 /* Default-568h@2x.png in Resources */,
+				AA37228316C32CB900AC9B20 /* DribbbleViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AA37225F16C32CB900AC9B20 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA37227316C32CB900AC9B20 /* main.m in Sources */,
+				AA37227716C32CB900AC9B20 /* DribbbleAppDelegate.m in Sources */,
+				AA37228016C32CB900AC9B20 /* DribbbleViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		AA37226F16C32CB900AC9B20 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AA37227016C32CB900AC9B20 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		AA37228116C32CB900AC9B20 /* DribbbleViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AA37228216C32CB900AC9B20 /* en */,
+			);
+			name = DribbbleViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AA37228416C32CB900AC9B20 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		AA37228516C32CB900AC9B20 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AA37228716C32CB900AC9B20 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Dribble/Dribbble-Prefix.pch";
+				INFOPLIST_FILE = "Dribble/Dribbble-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				PRODUCT_NAME = Dribbble;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		AA37228816C32CB900AC9B20 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Dribble/Dribbble-Prefix.pch";
+				INFOPLIST_FILE = "Dribble/Dribbble-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				PRODUCT_NAME = Dribbble;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AA37225E16C32CB900AC9B20 /* Build configuration list for PBXProject "Dribbble" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA37228416C32CB900AC9B20 /* Debug */,
+				AA37228516C32CB900AC9B20 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA37228616C32CB900AC9B20 /* Build configuration list for PBXNativeTarget "Dribbble" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA37228716C32CB900AC9B20 /* Debug */,
+				AA37228816C32CB900AC9B20 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AA37225B16C32CB900AC9B20 /* Project object */;
+}
