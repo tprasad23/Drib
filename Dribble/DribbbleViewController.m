@@ -133,6 +133,10 @@
     {
         UIImageView *tmpImageView = [[UIImageView alloc] initWithImage:shotToPresent];
         [tmpImageView setFrame:CGRectMake(i*kImgWidth, 0, kImgWidth, kImgHeight)];
+        tmpImageView.userInteractionEnabled = YES;
+        
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageTapped:)];
+        [tmpImageView addGestureRecognizer:tap];
         
         i++;
         [theScrollView addSubview:tmpImageView];
@@ -159,14 +163,10 @@
     return result;
 }
 
--(void) loadImagesToScrollView
+- (void)imageTapped:(UIGestureRecognizer *)sender
 {
-    
-    
-    
-    
+    NSLog(@"imageTapped");
+    // how to get reference on selected item in scrollview???
 }
-
-
 
 @end

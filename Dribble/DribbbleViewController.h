@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DribbbleViewController : UIViewController
+@interface DribbbleViewController : UIViewController <UIGestureRecognizerDelegate>
 
 @property(nonatomic, strong) UIView *contentView;
 @property(nonatomic, strong) NSArray *shots;
