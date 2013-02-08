@@ -27,7 +27,13 @@
 @synthesize theScrollView;
 @synthesize everyoneShots;
 @synthesize imageDetailArray;
-
+@synthesize imageDetailView;
+@synthesize mainLabel;
+@synthesize viewsLabel;
+@synthesize reboundsLabel;
+@synthesize artistNameLabel;
+@synthesize artistLocationLabel;
+@synthesize artistShotCountLabel;
 
 - (id) init
 {
@@ -112,9 +118,10 @@
     
     CGRect frame = [UIScreen mainScreen].applicationFrame;
     contentView = [[UIView alloc] initWithFrame:frame];
-    frame = [UIScreen mainScreen].bounds;
+//    frame = [UIScreen mainScreen].bounds;
     
     float width = frame.size.width;
+    float height = frame.size.height;
         
     // set background color
     
@@ -144,9 +151,66 @@
     
     [self PopulateImages:everyoneShots];
     
-    [contentView addSubview:theScrollView];
-    self.view = contentView;
+    // Set Up Image Detail View
     
+    frame = CGRectMake(0,kYOffset+170,width,height-270);
+    imageDetailView = [[UIView alloc] initWithFrame:frame];
+    imageDetailView.backgroundColor = [UIColor blackColor];
+    imageDetailView.alpha = .6f;
+    imageDetailView.hidden = YES;
+    
+    frame = CGRectMake(10, 0, width, 20);
+    mainLabel = [[UILabel alloc] initWithFrame:frame];
+    mainLabel.textColor = [UIColor whiteColor];
+    mainLabel.backgroundColor = [UIColor clearColor];
+    mainLabel.text = @"Main Label";
+    mainLabel.font=[UIFont systemFontOfSize:12.0];
+
+    frame = CGRectMake(10, 20, width, 20);
+    viewsLabel = [[UILabel alloc] initWithFrame:frame];
+    viewsLabel.textColor = [UIColor whiteColor];
+    viewsLabel.backgroundColor = [UIColor clearColor];
+    viewsLabel.text = @"Main2 Label";
+    viewsLabel.font=[UIFont systemFontOfSize:12.0];
+
+    frame = CGRectMake(10, 40, width, 20);
+    reboundsLabel = [[UILabel alloc] initWithFrame:frame];
+    reboundsLabel.textColor = [UIColor whiteColor];
+    reboundsLabel.backgroundColor = [UIColor clearColor];
+    reboundsLabel.text = @"Main3 Label";
+    reboundsLabel.font=[UIFont systemFontOfSize:12.0];
+
+    frame = CGRectMake(10, 60, width, 20);
+    artistNameLabel = [[UILabel alloc] initWithFrame:frame];
+    artistNameLabel.textColor = [UIColor whiteColor];
+    artistNameLabel.backgroundColor = [UIColor clearColor];
+    artistNameLabel.text = @"Main4 Label";
+    artistNameLabel.font=[UIFont systemFontOfSize:12.0];
+
+    frame = CGRectMake(10, 80, width, 20);
+    artistLocationLabel = [[UILabel alloc] initWithFrame:frame];
+    artistLocationLabel.textColor = [UIColor whiteColor];
+    artistLocationLabel.backgroundColor = [UIColor clearColor];
+    artistLocationLabel.text = @"Main5 Label";
+    artistLocationLabel.font=[UIFont systemFontOfSize:12.0];
+
+    frame = CGRectMake(10, 100, width, 20);
+    artistShotCountLabel = [[UILabel alloc] initWithFrame:frame];
+    artistShotCountLabel.textColor = [UIColor whiteColor];
+    artistShotCountLabel.backgroundColor = [UIColor clearColor];
+    artistShotCountLabel.text = @"Main6 Label";
+    artistShotCountLabel.font=[UIFont systemFontOfSize:12.0];
+
+    [imageDetailView addSubview:mainLabel];
+    [imageDetailView addSubview:viewsLabel];
+    [imageDetailView addSubview:reboundsLabel];
+    [imageDetailView addSubview:artistNameLabel];
+    [imageDetailView addSubview:artistLocationLabel];
+    [imageDetailView addSubview:artistShotCountLabel];
+    
+    [contentView addSubview:theScrollView];
+    [contentView addSubview:imageDetailView];
+    self.view = contentView;
 }
 
 - (void)didReceiveMemoryWarning
@@ -206,10 +270,37 @@
     
     ImageDetail *tempImageDetail = [imageDetailArray objectAtIndex:index];
     
-    NSLog(@"title is %@",tempImageDetail.title);
-    NSLog(@"views count is %@",tempImageDetail.viewsCount);
-    NSLog(@"artist name is %@",tempImageDetail.artistName);
+    [self updateImageDetailView:tempImageDetail];
     
 }
+
+- (void)updateImageDetailView:(ImageDetail *)imageDetail
+{
+    // update the image detail view
+    
+    NSString *mainLabelString = [NSString stringWithFormat:@"Image Title: %@",imageDetail.title];
+    NSString *viewsLabelString = [NSString stringWithFormat:@"Views: %@",imageDetail.viewsCount];
+    NSString *reboundsLabelString = [NSString stringWithFormat:@"Rebounds: %@",imageDetail.reboundsCount];
+    NSString *artistNameLabelString =
+            [NSString stringWithFormat:@"Artist Name: %@",imageDetail.artistName];
+    NSString *artistLocationLabelString =
+            [NSString stringWithFormat:@"Location: %@",imageDetail.artistLocation];
+    NSString *artistShotCountLabelString =
+            [NSString stringWithFormat:@"Shot Count: %@",imageDetail.artistShotsCount];
+    
+    mainLabel.text = mainLabelString;
+    viewsLabel.text = viewsLabelString;
+    reboundsLabel.text = reboundsLabelString;
+    artistNameLabel.text = artistNameLabelString;
+    artistLocationLabel.text = artistLocationLabelString;
+    artistShotCountLabel.text = artistShotCountLabelString;
+
+    if ( imageDetailView.hidden == YES )
+    {
+        imageDetailView.hidden = NO;
+    }
+    
+}
+
 
 @end
