@@ -25,7 +25,7 @@
 @synthesize shots;
 @synthesize shotURLS;
 @synthesize theScrollView;
-@synthesize presentedShots;
+@synthesize everyoneShots;
 
 
 - (id) init
@@ -117,30 +117,17 @@
 
     // Load the Images into the Image Array.
     
-    presentedShots = [[NSMutableArray alloc] init];
+    everyoneShots = [[NSMutableArray alloc] init];
     for ( i = 0; i < numPresentedImgs; i++)
     {
         UIImage *tmpImage = [[UIImage alloc] init];
         tmpImage = [self GetImageFromURL:[shotURLS objectAtIndex:i]];
-        [presentedShots addObject:tmpImage];
+        [everyoneShots addObject:tmpImage];
     }
 
     // Add the Images from the array into Scroll View.
     
-    i = 0;
-    UIImage *shotToPresent;
-    for ( shotToPresent in presentedShots )
-    {
-        UIImageView *tmpImageView = [[UIImageView alloc] initWithImage:shotToPresent];
-        [tmpImageView setFrame:CGRectMake(i*kImgWidth, 0, kImgWidth, kImgHeight)];
-        tmpImageView.userInteractionEnabled = YES;
-        
-        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageTapped:)];
-        [tmpImageView addGestureRecognizer:tap];
-        
-        i++;
-        [theScrollView addSubview:tmpImageView];
-    }
+    [self PopulateImages:everyoneShots];
     
     [contentView addSubview:theScrollView];
     self.view = contentView;
@@ -151,6 +138,37 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark image loading methods
+
+// Provide this method an array of UIImages
+
+-(void) PopulateImages:(NSArray *)arrayOfImages {
+    
+    NSArray *subviews = [theScrollView subviews];
+    int numSubviews = [subviews count];
+    int numImages = [arrayOfImages count];
+    
+    if ( numSubviews == 0)
+    {
+        // must allocate the subviews
+        
+        int i = 0;
+        UIImage *shotToPresent;
+        for ( shotToPresent in arrayOfImages )
+        {
+            UIImageView *tmpImageView = [[UIImageView alloc] initWithImage:shotToPresent];
+            [tmpImageView setFrame:CGRectMake(i*kImgWidth, 0, kImgWidth, kImgHeight)];
+            tmpImageView.userInteractionEnabled = YES;
+            
+            UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageTapped:)];
+            [tmpImageView addGestureRecognizer:tap];
+            
+            i++;
+            [theScrollView addSubview:tmpImageView];
+        }
+    }
 }
 
 -(UIImage *) GetImageFromURL:(NSString *)fileURL {

@@ -12,11 +12,13 @@
 
 @property(nonatomic, strong) UIView *contentView;
 @property(nonatomic, strong) NSArray *shots;
-@property(nonatomic, strong) NSMutableArray *presentedShots;
+@property(nonatomic, strong) NSMutableArray *everyoneShots;
 @property(nonatomic, strong) NSMutableArray *shotURLS;
 @property(nonatomic, strong) UIScrollView *theScrollView;
 
 -(UIImage *) GetImageFromURL:(NSString *)fileURL;
+-(void) PopulateImages:(NSArray *)arrayOfImages;
+
 
 @end
 
