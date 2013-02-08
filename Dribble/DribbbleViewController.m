@@ -14,6 +14,7 @@
 #define kYOffset 70
 
 #import "DribbbleViewController.h"
+#import "ImageDetail.h"
 
 @interface DribbbleViewController ()
 
@@ -23,9 +24,9 @@
 
 @synthesize contentView;
 @synthesize shots;
-@synthesize shotURLS;
 @synthesize theScrollView;
 @synthesize everyoneShots;
+@synthesize imageDetailArray;
 
 
 - (id) init
@@ -53,25 +54,37 @@
             {
                 // Load image URLS into array.
                 
-                shotURLS = [[NSMutableArray alloc] init];
+                imageDetailArray = [[NSMutableArray alloc] init];
                 
                 NSArray *allShots = [jsonObjects objectForKey:@"shots"];
                 int i;
                 
+                // Only display a preset number of shots
+                
                 for (i = 0; i < kNumShots; i++)
                 {
-                    // get image URL from temporary shot
+                    // allocate temp image detail
+                    
+                    ImageDetail *tempImageDetail = [[ImageDetail alloc] init];
+                    
+                    // get data from larger json object
                     
                     NSDictionary *tempShot = [allShots objectAtIndex:i];
-                    NSString *imgURL = [tempShot valueForKey:@"image_url"];
+                    NSDictionary *tempArtist = [tempShot valueForKey:@"player"];
                     
-                    [shotURLS addObject:imgURL];
+                    // populate temp image detail object
                     
-                    NSLog(@"image url is %@",imgURL);
+                    tempImageDetail.title = [tempShot valueForKey:@"title"];
+                    tempImageDetail.imageURL = [tempShot valueForKey:@"image_url"];
+                    tempImageDetail.viewsCount = [tempShot valueForKey:@"views_count"];
+                    tempImageDetail.reboundsCount = [tempShot valueForKey:@"rebounds_count"];
+                    tempImageDetail.artistName = [tempArtist valueForKey:@"name"];
+                    tempImageDetail.artistLocation = [tempArtist valueForKey:@"location"];
+                    tempImageDetail.artistShotsCount = [tempArtist valueForKey:@"shots_count"];
+                    [imageDetailArray addObject:tempImageDetail];
+                    
                 }
                 
-                int numToShow = [shotURLS count];
-                NSLog(@"showing %d these many shots",numToShow);
             }
             
         }
@@ -110,7 +123,7 @@
     // Create Scroll View frame and content size based on # of images to present.
     
     int i;
-    int numPresentedImgs = [shotURLS count];
+    int numPresentedImgs = [imageDetailArray count];
     frame = CGRectMake(0,kYOffset,width,kImgHeight);
     theScrollView = [[UIScrollView alloc] initWithFrame:frame];
     theScrollView.contentSize = CGSizeMake(numPresentedImgs * kImgWidth, kImgHeight);
@@ -121,7 +134,9 @@
     for ( i = 0; i < numPresentedImgs; i++)
     {
         UIImage *tmpImage = [[UIImage alloc] init];
-        tmpImage = [self GetImageFromURL:[shotURLS objectAtIndex:i]];
+        ImageDetail *tempImageDetail = [imageDetailArray objectAtIndex:i];
+        
+        tmpImage = [self GetImageFromURL:tempImageDetail.imageURL];
         [everyoneShots addObject:tmpImage];
     }
 
@@ -161,6 +176,7 @@
             UIImageView *tmpImageView = [[UIImageView alloc] initWithImage:shotToPresent];
             [tmpImageView setFrame:CGRectMake(i*kImgWidth, 0, kImgWidth, kImgHeight)];
             tmpImageView.userInteractionEnabled = YES;
+            tmpImageView.tag = 1000 + i;
             
             UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageTapped:)];
             [tmpImageView addGestureRecognizer:tap];
@@ -184,7 +200,16 @@
 - (void)imageTapped:(UIGestureRecognizer *)sender
 {
     NSLog(@"imageTapped");
-    // how to get reference on selected item in scrollview???
+
+    UIImageView *imageView = (UIImageView *)[sender view];
+    NSInteger index = imageView.tag - 1000;
+    
+    ImageDetail *tempImageDetail = [imageDetailArray objectAtIndex:index];
+    
+    NSLog(@"title is %@",tempImageDetail.title);
+    NSLog(@"views count is %@",tempImageDetail.viewsCount);
+    NSLog(@"artist name is %@",tempImageDetail.artistName);
+    
 }
 
 @end
