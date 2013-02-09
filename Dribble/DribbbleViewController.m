@@ -26,6 +26,7 @@
 @synthesize shots;
 @synthesize theScrollView;
 @synthesize everyoneShots;
+@synthesize artistShots;
 @synthesize imageDetailArray;
 @synthesize imageDetailView;
 @synthesize artistDetailView;
@@ -44,6 +45,7 @@
 @synthesize followersCountLabel;
 @synthesize twitterScreenNameLabel;
 @synthesize dismissButton;
+@synthesize artistImageURLS;
 
 - (id) init
 {
@@ -333,6 +335,56 @@
     }
 }
 
+-(void)LoadArtistImages:(NSInteger)artistId
+{
+    // Load the Images associated with a particular artist
+    
+    NSURL *artistImagesURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://api.dribbble.com/players/%d/shots",artistId]];
+    NSData *jsonData = [NSData dataWithContentsOfURL:artistImagesURL];
+    NSError *error = nil;
+    
+    if ( jsonData )
+    {
+        id jsonObjects = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&error];
+        
+        if (error)
+        {
+            NSLog(@"in load artist images error is %@", [error localizedDescription]);
+        }
+        else
+        {
+            // Load image URLS into array.
+            
+            artistShots = [[NSMutableArray alloc] init];
+            
+            NSArray *allShots = [jsonObjects objectForKey:@"shots"];
+            int i;
+            
+            // Only display a preset number of shots
+            
+            for (i = 0; i < kNumShots; i++)
+            {
+                
+                // Get single shot from larger json object
+                
+                NSDictionary *tempShot = [allShots objectAtIndex:i];
+                
+                // Request image and add to artistImage Array
+                
+                NSString *artistImageURL = [tempShot valueForKey:@"image_url"];
+                UIImage *tmpImage = [[UIImage alloc] init];
+                tmpImage = [self GetImageFromURL:artistImageURL];
+                [artistShots addObject:tmpImage];
+                
+            }
+            
+            [self PopulateImages:artistShots];
+            
+        }
+
+    }
+}
+
 #pragma mark image loading methods
 
 // Provide this method an array of UIImages
@@ -342,12 +394,16 @@
     NSArray *subviews = [theScrollView subviews];
     int numSubviews = [subviews count];
     int numImages = [arrayOfImages count];
+    int i;
+    
+    NSLog(@"calling Populate Images - # of images are: %d",numImages);
     
     if ( numSubviews == 0)
     {
         // must allocate the subviews
         
-        int i = 0;
+        i = 0;
+        int j;
         UIImage *shotToPresent;
         for ( shotToPresent in arrayOfImages )
         {
@@ -361,17 +417,32 @@
             
             i++;
             [theScrollView addSubview:tmpImageView];
+            
+            j = [[theScrollView subviews] count];
+            
+            NSLog(@"inside allocating subviews loop, #subviews is %d",j);
+            
         }
+        
+        
+        
     }
     else
     {
         // subviews have already been allocated
         
+        NSLog(@"The number of subviews are %d", numSubviews);
         
-        
-        
+        i = 0;
+        for ( UIImageView *view in subviews )
+        {
+            if ( i < numImages)
+            {
+                [view setImage:[arrayOfImages objectAtIndex:i]];
+                i++;
+            }
+        }
     }
-
 }
 
 -(UIImage *) GetImageFromURL:(NSString *)fileURL {
@@ -471,7 +542,10 @@
     NSLog(@"artist button tapped");
     NSLog(@"artist id is : %d",btn.tag);
 
+    // artist ID is saved in the button tag.
+    
     [self LoadArtistData:btn.tag];
+    [self LoadArtistImages:btn.tag];
     
 }
 
@@ -480,6 +554,11 @@
     NSLog(@"Dismiss button tapped");
     
     artistDetailView.hidden = YES;
+    
+    // Reload the initial images polled at the invocation of the app
+
+    [self PopulateImages:everyoneShots];
+    
 
 }
 

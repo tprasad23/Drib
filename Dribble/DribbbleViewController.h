@@ -43,7 +43,9 @@
 
 @property(nonatomic, strong) NSArray *shots;
 @property(nonatomic, strong) NSMutableArray *everyoneShots;
+@property(nonatomic, strong) NSMutableArray *artistShots;
 @property(nonatomic, strong) NSMutableArray *imageDetailArray;
+@property(nonatomic, strong) NSMutableArray *artistImageURLS;
 
 -(UIImage *) GetImageFromURL:(NSString *)fileURL;
 -(void) PopulateImages:(NSArray *)arrayOfImages;
