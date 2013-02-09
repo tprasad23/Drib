@@ -28,12 +28,22 @@
 @synthesize everyoneShots;
 @synthesize imageDetailArray;
 @synthesize imageDetailView;
+@synthesize artistDetailView;
 @synthesize mainLabel;
 @synthesize viewsLabel;
 @synthesize reboundsLabel;
 @synthesize artistNameLabel;
+@synthesize artistNameButton;
 @synthesize artistLocationLabel;
 @synthesize artistShotCountLabel;
+
+@synthesize nameLabel;
+@synthesize locationLabel;
+@synthesize shotsCountLabel;
+@synthesize likesCountLabel;
+@synthesize followersCountLabel;
+@synthesize twitterScreenNameLabel;
+@synthesize dismissButton;
 
 - (id) init
 {
@@ -54,7 +64,7 @@
             
             if (error)
             {
-                NSLog(@"error is %@", [error localizedDescription]);
+                NSLog(@"in init error is %@", [error localizedDescription]);
             }
             else
             {
@@ -87,6 +97,7 @@
                     tempImageDetail.artistName = [tempArtist valueForKey:@"name"];
                     tempImageDetail.artistLocation = [tempArtist valueForKey:@"location"];
                     tempImageDetail.artistShotsCount = [tempArtist valueForKey:@"shots_count"];
+                    tempImageDetail.artistId = [tempArtist valueForKey:@"id"];
                     [imageDetailArray addObject:tempImageDetail];
                     
                 }
@@ -158,34 +169,38 @@
     imageDetailView.backgroundColor = [UIColor blackColor];
     imageDetailView.alpha = .6f;
     imageDetailView.hidden = YES;
-    
+
     frame = CGRectMake(10, 0, width, 20);
+    artistNameButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    artistNameButton.frame = frame;
+	[artistNameButton setTitle:@"Main4Label" forState:UIControlStateNormal];
+    artistNameButton.titleLabel.textAlignment = NSTextAlignmentLeft;
+    artistNameButton.titleLabel.font = [UIFont systemFontOfSize:12.0];
+	[artistNameButton addTarget:self
+                         action:@selector(ArtistButtonPressed:)
+               forControlEvents:UIControlEventTouchUpInside];
+    artistNameButton.backgroundColor = [UIColor purpleColor];
+
+    frame = CGRectMake(10, 20, width, 20);
     mainLabel = [[UILabel alloc] initWithFrame:frame];
     mainLabel.textColor = [UIColor whiteColor];
     mainLabel.backgroundColor = [UIColor clearColor];
     mainLabel.text = @"Main Label";
     mainLabel.font=[UIFont systemFontOfSize:12.0];
 
-    frame = CGRectMake(10, 20, width, 20);
+    frame = CGRectMake(10, 40, width, 20);
     viewsLabel = [[UILabel alloc] initWithFrame:frame];
     viewsLabel.textColor = [UIColor whiteColor];
     viewsLabel.backgroundColor = [UIColor clearColor];
     viewsLabel.text = @"Main2 Label";
     viewsLabel.font=[UIFont systemFontOfSize:12.0];
 
-    frame = CGRectMake(10, 40, width, 20);
+    frame = CGRectMake(10, 60, width, 20);
     reboundsLabel = [[UILabel alloc] initWithFrame:frame];
     reboundsLabel.textColor = [UIColor whiteColor];
     reboundsLabel.backgroundColor = [UIColor clearColor];
     reboundsLabel.text = @"Main3 Label";
     reboundsLabel.font=[UIFont systemFontOfSize:12.0];
-
-    frame = CGRectMake(10, 60, width, 20);
-    artistNameLabel = [[UILabel alloc] initWithFrame:frame];
-    artistNameLabel.textColor = [UIColor whiteColor];
-    artistNameLabel.backgroundColor = [UIColor clearColor];
-    artistNameLabel.text = @"Main4 Label";
-    artistNameLabel.font=[UIFont systemFontOfSize:12.0];
 
     frame = CGRectMake(10, 80, width, 20);
     artistLocationLabel = [[UILabel alloc] initWithFrame:frame];
@@ -204,12 +219,75 @@
     [imageDetailView addSubview:mainLabel];
     [imageDetailView addSubview:viewsLabel];
     [imageDetailView addSubview:reboundsLabel];
-    [imageDetailView addSubview:artistNameLabel];
+    [imageDetailView addSubview:artistNameButton];
     [imageDetailView addSubview:artistLocationLabel];
     [imageDetailView addSubview:artistShotCountLabel];
     
+    // Set Up Artist Detail View
+    
+    frame = CGRectMake(0,kYOffset+170,width,height-270);
+    artistDetailView = [[UIView alloc] initWithFrame:frame];
+    artistDetailView.backgroundColor = [UIColor blackColor];
+    artistDetailView.alpha = .6f;
+    artistDetailView.hidden = YES;
+    
+    frame = CGRectMake(10, 0, width, 20);
+    nameLabel = [[UILabel alloc] initWithFrame:frame];
+    nameLabel.textColor = [UIColor whiteColor];
+    nameLabel.backgroundColor = [UIColor clearColor];
+    nameLabel.text = @"Main Label";
+    nameLabel.font=[UIFont systemFontOfSize:12.0];
+    
+    frame = CGRectMake(10, 20, width, 20);
+    locationLabel = [[UILabel alloc] initWithFrame:frame];
+    locationLabel.textColor = [UIColor whiteColor];
+    locationLabel.backgroundColor = [UIColor clearColor];
+    locationLabel.text = @"Main2 Label";
+    locationLabel.font=[UIFont systemFontOfSize:12.0];
+    
+    frame = CGRectMake(10, 40, width, 20);
+    shotsCountLabel = [[UILabel alloc] initWithFrame:frame];
+    shotsCountLabel.textColor = [UIColor whiteColor];
+    shotsCountLabel.backgroundColor = [UIColor clearColor];
+    shotsCountLabel.text = @"Main3 Label";
+    shotsCountLabel.font=[UIFont systemFontOfSize:12.0];
+    
+    frame = CGRectMake(10, 60, width, 20);
+    likesCountLabel = [[UILabel alloc] initWithFrame:frame];
+    likesCountLabel.textColor = [UIColor whiteColor];
+    likesCountLabel.backgroundColor = [UIColor clearColor];
+    likesCountLabel.text = @"Main5 Label";
+    likesCountLabel.font=[UIFont systemFontOfSize:12.0];
+    
+    frame = CGRectMake(10, 80, width, 20);
+    followersCountLabel = [[UILabel alloc] initWithFrame:frame];
+    followersCountLabel.textColor = [UIColor whiteColor];
+    followersCountLabel.backgroundColor = [UIColor clearColor];
+    followersCountLabel.text = @"Main6 Label";
+    followersCountLabel.font=[UIFont systemFontOfSize:12.0];
+    
+    frame = CGRectMake(10, 100, width, 20);
+    dismissButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    dismissButton.frame = frame;
+	[dismissButton setTitle:@"Dismiss" forState:UIControlStateNormal];
+    dismissButton.titleLabel.textAlignment = NSTextAlignmentLeft;
+    dismissButton.titleLabel.font = [UIFont systemFontOfSize:12.0];
+	[dismissButton addTarget:self
+                         action:@selector(DismissButtonPressed:)
+               forControlEvents:UIControlEventTouchUpInside];
+    dismissButton.backgroundColor = [UIColor purpleColor];
+    
+    [artistDetailView addSubview:nameLabel];
+    [artistDetailView addSubview:locationLabel];
+    [artistDetailView addSubview:shotsCountLabel];
+    [artistDetailView addSubview:likesCountLabel];
+    [artistDetailView addSubview:followersCountLabel];
+    [artistDetailView addSubview:twitterScreenNameLabel];
+    [artistDetailView addSubview:dismissButton];
+    
     [contentView addSubview:theScrollView];
     [contentView addSubview:imageDetailView];
+    [contentView addSubview:artistDetailView];
     self.view = contentView;
 }
 
@@ -217,6 +295,42 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)LoadArtistData:(NSInteger)artistId
+{
+
+    ArtistDetail* artistDetail = [[ArtistDetail alloc] init];
+    NSURL* getArtistURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://api.dribbble.com/players/%d",artistId]];
+    
+    // Make http request to obtain the artist data
+    
+    NSData *jsonData = [NSData dataWithContentsOfURL:getArtistURL];
+    NSError *error = nil;
+    
+    if ( jsonData )
+    {
+        id jsonObjects = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&error];
+        
+        if (error)
+        {
+            NSLog(@"in init error is %@", [error localizedDescription]);
+        }
+        else
+        {
+            // Load the artist details from json into object
+
+            artistDetail.name = [jsonObjects objectForKey:@"name"];
+            artistDetail.location = [jsonObjects objectForKey:@"location"];
+            artistDetail.shotsCount = [jsonObjects objectForKey:@"shots_count"];
+            artistDetail.likesCount = [jsonObjects objectForKey:@"likes_count"];
+            artistDetail.followersCount = [jsonObjects objectForKey:@"followers_count"];
+            artistDetail.twitterScreenName = [jsonObjects objectForKey:@"twitter_screen_name"];
+            
+            [self updateArtistDetailView:artistDetail];
+            
+        }
+    }
 }
 
 #pragma mark image loading methods
@@ -249,6 +363,15 @@
             [theScrollView addSubview:tmpImageView];
         }
     }
+    else
+    {
+        // subviews have already been allocated
+        
+        
+        
+        
+    }
+
 }
 
 -(UIImage *) GetImageFromURL:(NSString *)fileURL {
@@ -261,17 +384,36 @@
     return result;
 }
 
-- (void)imageTapped:(UIGestureRecognizer *)sender
-{
-    NSLog(@"imageTapped");
+#pragma mark Update Detail View Methods
 
-    UIImageView *imageView = (UIImageView *)[sender view];
-    NSInteger index = imageView.tag - 1000;
+- (void)updateArtistDetailView:(ArtistDetail *)artistDetail
+{
+    // update artist detail view
     
-    ImageDetail *tempImageDetail = [imageDetailArray objectAtIndex:index];
+    NSString *nameLabelString = [NSString stringWithFormat:@"Artist Name: %@",artistDetail.name];
+    NSString *locationLabelString = [NSString stringWithFormat:@"Location: %@",artistDetail.location];
+    NSString *shotsCountLabelString =
+        [NSString stringWithFormat:@"Shots: %@",artistDetail.shotsCount];
+    NSString *likesCountLabelString =
+        [NSString stringWithFormat:@"Likes: %@",artistDetail.likesCount];
+    NSString *followersCountLabelString =
+        [NSString stringWithFormat:@"Followers: %@",artistDetail.followersCount];
+    NSString *twitterScreenNameLabelString =
+        [NSString stringWithFormat:@"Twitter: %@",artistDetail.twitterScreenName];
     
-    [self updateImageDetailView:tempImageDetail];
+    nameLabel.text = nameLabelString;
+    locationLabel.text = locationLabelString;
+    shotsCountLabel.text = shotsCountLabelString;
+    likesCountLabel.text = likesCountLabelString;
+    followersCountLabel.text = followersCountLabelString;
+    twitterScreenNameLabel.text = twitterScreenNameLabelString;
     
+    if ( artistDetailView.hidden == YES )
+    {
+        artistDetailView.hidden = NO;
+    }
+    
+    imageDetailView.hidden = YES;
 }
 
 - (void)updateImageDetailView:(ImageDetail *)imageDetail
@@ -291,7 +433,8 @@
     mainLabel.text = mainLabelString;
     viewsLabel.text = viewsLabelString;
     reboundsLabel.text = reboundsLabelString;
-    artistNameLabel.text = artistNameLabelString;
+    [artistNameButton setTitle:artistNameLabelString forState:UIControlStateNormal];
+    artistNameButton.tag = [imageDetail.artistId intValue];
     artistLocationLabel.text = artistLocationLabelString;
     artistShotCountLabel.text = artistShotCountLabelString;
 
@@ -300,6 +443,44 @@
         imageDetailView.hidden = NO;
     }
     
+}
+
+#pragma mark button selectors
+
+- (void)imageTapped:(UIGestureRecognizer *)sender
+{
+    NSLog(@"imageTapped");
+    
+    if ( artistDetailView.hidden == YES)
+    {
+        // only engage the tap when the artist detail view gets dismissed.
+        
+        UIImageView *imageView = (UIImageView *)[sender view];
+        NSInteger index = imageView.tag - 1000;
+    
+        ImageDetail *tempImageDetail = [imageDetailArray objectAtIndex:index];
+    
+        NSLog(@"artist Id is %@",tempImageDetail.artistId);
+    
+        [self updateImageDetailView:tempImageDetail];
+    }
+}
+
+- (void) ArtistButtonPressed:(UIButton*)btn {
+    
+    NSLog(@"artist button tapped");
+    NSLog(@"artist id is : %d",btn.tag);
+
+    [self LoadArtistData:btn.tag];
+    
+}
+
+- (void) DismissButtonPressed:(UIButton*)btn {
+    
+    NSLog(@"Dismiss button tapped");
+    
+    artistDetailView.hidden = YES;
+
 }
 
 
