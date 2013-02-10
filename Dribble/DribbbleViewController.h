@@ -19,6 +19,12 @@
 @property(nonatomic, strong) UIView *imageDetailView;
 @property(nonatomic, strong) UIView *artistDetailView;
 
+// Top Level Labels
+
+@property(nonatomic, strong) UILabel *topLabel;
+@property(nonatomic, strong) UILabel *instructionLabel;
+
+
 // Image Detail Labels
 
 @property(nonatomic, strong) UILabel *mainLabel;

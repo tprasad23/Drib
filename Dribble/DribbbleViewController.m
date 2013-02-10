@@ -31,6 +31,8 @@
 @synthesize imageDetailView;
 @synthesize artistDetailView;
 @synthesize mainLabel;
+@synthesize topLabel;
+@synthesize instructionLabel;
 @synthesize viewsLabel;
 @synthesize reboundsLabel;
 @synthesize artistNameLabel;
@@ -131,7 +133,6 @@
     
     CGRect frame = [UIScreen mainScreen].applicationFrame;
     contentView = [[UIView alloc] initWithFrame:frame];
-//    frame = [UIScreen mainScreen].bounds;
     
     float width = frame.size.width;
     float height = frame.size.height;
@@ -164,6 +165,22 @@
     
     [self PopulateImages:everyoneShots];
     
+    // Set up Top Level Labels.
+    
+    frame = CGRectMake(20, 20, width/2, 20);
+    topLabel = [[UILabel alloc] initWithFrame:frame];
+    topLabel.textColor = [UIColor whiteColor];
+    topLabel.backgroundColor = [UIColor clearColor];
+    topLabel.text = @"Everyone Shots";
+    topLabel.font=[UIFont systemFontOfSize:12.0];
+
+    frame = CGRectMake(20, 40, width, 20);
+    instructionLabel = [[UILabel alloc] initWithFrame:frame];
+    instructionLabel.textColor = [UIColor whiteColor];
+    instructionLabel.backgroundColor = [UIColor clearColor];
+    instructionLabel.text = @"Tap image for more image info.";
+    instructionLabel.font=[UIFont systemFontOfSize:12.0];
+
     // Set Up Image Detail View
     
     frame = CGRectMake(0,kYOffset+170,width,height-270);
@@ -288,6 +305,8 @@
     [artistDetailView addSubview:dismissButton];
     
     [contentView addSubview:theScrollView];
+    [contentView addSubview:topLabel];
+    [contentView addSubview:instructionLabel];
     [contentView addSubview:imageDetailView];
     [contentView addSubview:artistDetailView];
     self.view = contentView;
@@ -421,15 +440,12 @@
             j = [[theScrollView subviews] count];
             
             NSLog(@"inside allocating subviews loop, #subviews is %d",j);
-            
         }
-        
-        
-        
     }
     else
     {
-        // subviews have already been allocated
+        // subviews have already been allocated, so just update the images in the subviews
+        // with the newly sent images (could either be artist specific or 'everyone'
         
         NSLog(@"The number of subviews are %d", numSubviews);
         
@@ -534,6 +550,7 @@
         NSLog(@"artist Id is %@",tempImageDetail.artistId);
     
         [self updateImageDetailView:tempImageDetail];
+        instructionLabel.text = @"Tap artist name to see artist shots";
     }
 }
 
@@ -546,6 +563,8 @@
     
     [self LoadArtistData:btn.tag];
     [self LoadArtistImages:btn.tag];
+    topLabel.text = @"Artist Shots";
+    instructionLabel.text = @"Tap dismiss to return to everyone shots";
     
 }
 
@@ -558,7 +577,8 @@
     // Reload the initial images polled at the invocation of the app
 
     [self PopulateImages:everyoneShots];
-    
+    topLabel.text = @"Everyone Shots";
+    instructionLabel.text = @"Tap image for more image info.";
 
 }
 
