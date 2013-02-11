@@ -322,6 +322,7 @@
 {
 
     ArtistDetail* artistDetail = [[ArtistDetail alloc] init];
+
     NSURL* getArtistURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://api.dribbble.com/players/%d",artistId]];
     
     // Make http request to obtain the artist data
@@ -414,15 +415,12 @@
     int numSubviews = [subviews count];
     int numImages = [arrayOfImages count];
     int i;
-    
-    NSLog(@"calling Populate Images - # of images are: %d",numImages);
-    
+
     if ( numSubviews == 0)
     {
         // must allocate the subviews
         
         i = 0;
-        int j;
         UIImage *shotToPresent;
         for ( shotToPresent in arrayOfImages )
         {
@@ -437,9 +435,6 @@
             i++;
             [theScrollView addSubview:tmpImageView];
             
-            j = [[theScrollView subviews] count];
-            
-            NSLog(@"inside allocating subviews loop, #subviews is %d",j);
         }
     }
     else
@@ -547,8 +542,6 @@
     
         ImageDetail *tempImageDetail = [imageDetailArray objectAtIndex:index];
     
-        NSLog(@"artist Id is %@",tempImageDetail.artistId);
-    
         [self updateImageDetailView:tempImageDetail];
         instructionLabel.text = @"Tap artist name to see artist shots";
     }
@@ -557,9 +550,10 @@
 - (void) ArtistButtonPressed:(UIButton*)btn {
     
     NSLog(@"artist button tapped");
-    NSLog(@"artist id is : %d",btn.tag);
 
     // artist ID is saved in the button tag.
+    
+    // Update to instructional label
     
     [self LoadArtistData:btn.tag];
     [self LoadArtistImages:btn.tag];

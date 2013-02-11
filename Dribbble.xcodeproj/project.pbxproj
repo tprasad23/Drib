@@ -18,6 +18,7 @@
 		AA37227D16C32CB900AC9B20 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA37227C16C32CB900AC9B20 /* Default-568h@2x.png */; };
 		AA37228016C32CB900AC9B20 /* DribbbleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA37227F16C32CB900AC9B20 /* DribbbleViewController.m */; };
 		AAE561B216C563A60034AD83 /* ImageDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE561B116C563A60034AD83 /* ImageDetail.m */; };
+		AAE561B516C594D00034AD83 /* ArtistDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE561B416C594D00034AD83 /* ArtistDetail.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,8 @@
 		AA37227F16C32CB900AC9B20 /* DribbbleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DribbbleViewController.m; sourceTree = "<group>"; };
 		AAE561B016C563A60034AD83 /* ImageDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageDetail.h; sourceTree = "<group>"; };
 		AAE561B116C563A60034AD83 /* ImageDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageDetail.m; sourceTree = "<group>"; };
+		AAE561B316C594D00034AD83 /* ArtistDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtistDetail.h; sourceTree = "<group>"; };
+		AAE561B416C594D00034AD83 /* ArtistDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtistDetail.m; sourceTree = "<group>"; };
 		AAF8E40A16C419B4008C4C45 /* URLRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = URLRequest.h; sourceTree = "<group>"; };
 		AAF8E40B16C419B4008C4C45 /* URLRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = URLRequest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -91,6 +94,8 @@
 				AA37227616C32CB900AC9B20 /* DribbbleAppDelegate.m */,
 				AA37227E16C32CB900AC9B20 /* DribbbleViewController.h */,
 				AA37227F16C32CB900AC9B20 /* DribbbleViewController.m */,
+				AAE561B316C594D00034AD83 /* ArtistDetail.h */,
+				AAE561B416C594D00034AD83 /* ArtistDetail.m */,
 				AAE561B016C563A60034AD83 /* ImageDetail.h */,
 				AAE561B116C563A60034AD83 /* ImageDetail.m */,
 				AA37226D16C32CB900AC9B20 /* Supporting Files */,
@@ -191,6 +196,7 @@
 				AA37227716C32CB900AC9B20 /* DribbbleAppDelegate.m in Sources */,
 				AA37228016C32CB900AC9B20 /* DribbbleViewController.m in Sources */,
 				AAE561B216C563A60034AD83 /* ImageDetail.m in Sources */,
+				AAE561B516C594D00034AD83 /* ArtistDetail.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
